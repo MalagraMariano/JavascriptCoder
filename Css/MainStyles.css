@@ -242,7 +242,7 @@ main {
   border-radius: 8px;
   margin-bottom: 1rem;
 }
-
+/* Información del producto */
 .producto .info {
   display: flex;
   flex-direction: column;
