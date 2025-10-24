@@ -139,21 +139,21 @@ const catalogItems = [
         'Guitarra Gibson Les Pauls',
         2250,
         'guitarra',
-        '../Images/shop/gibsonlespauls.jpg'
+        'Images/shop/gibsonlespauls.jpg'
     ),
     new CatalogItem(
         2,
         'Pedal BOSS DS-1',
         80,
         'pedal de guitarra',
-        '../Images/shop/pedalbossds1.jpeg'
+        'Images/shop/pedalbossds1.jpeg'
     ),
     new CatalogItem(
         3,
         'Bajo Ibanez',
         800,
         'bajo',
-        '../Images/shop/bajoIbanez.webp'
+        'Images/shop/bajoIbanez.webp'
     ),
     new CatalogItem(
         4,

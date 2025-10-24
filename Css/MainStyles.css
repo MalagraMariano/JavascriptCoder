@@ -217,14 +217,11 @@ main {
 }
 
 .catalogo {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  gap: 2rem;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  padding: 2rem 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 2rem;
+    width: 100%;
+    padding: 2rem 0;
 }
 
 .producto {
@@ -328,26 +325,40 @@ main {
 
 /* Contenido principal: aside + catálogo */
 .shop-content {
-  display: grid;
-  grid-template-columns: 220px 1fr;
-  gap: 2rem;
-  width: 100%;
+    display: grid;
+    grid-template-columns: 200px 2fr;
+    grid-template-areas: 
+        "filters main"
+        ". pagination";
+    gap: 2rem;
+    width: 100%;
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 1rem;
 }
 
 /* Aside de filtros */
 .filtros {
-  min-width: 180px;
-}
-
-.filtros h4 {
-  margin-bottom: 0.5rem;
+    grid-area: filters;
+    min-width: 180px;
+    border-radius: 8px;
+    height: fit-content;
 }
 
 .filtros label {
-  font-size: 1rem;
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
+    display: block;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.catalogo {
+    grid-area: main;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 2rem;
+    width: 100%;
+    padding: 2rem 0;
 }
 
 /* Estilos de la oferta en la tienda con animación*/
@@ -371,24 +382,17 @@ main {
   }
 }
 /* Estilos para mobiles */
+
+
+/* Update media query for mobile */
 @media (max-width: 900px) {
-  .shop-content {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-  .filtros {
-    flex-direction: row;
-    flex-wrap: wrap;
-    min-width: unset;
-    margin-bottom: 1rem;
-    justify-content: flex-start;
-    gap: 1.5rem;
-  }
-  .catalogo {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-    padding: 1rem 0;
-  }
+    .shop-content {
+        grid-template-columns: 1fr;
+        grid-template-areas: 
+            "filters"
+            "main"
+            "pagination";
+    }
 }
 
 .producto img {
@@ -444,10 +448,13 @@ main {
 
 /* Estilos para el paginado de carrito */
 .pagination {
+    grid-area: pagination;
     display: flex;
     justify-content: center;
-    gap: 10px;
+    align-items: center;
+    gap: 15px;
     margin: 20px 0;
+    width: 100%;
 }
 
 .pagination button {
@@ -458,14 +465,14 @@ main {
     border-radius: 4px;
     cursor: pointer;
     transition: background 0.2s;
-}
-
-.pagination button:hover {
-    background: #e65100;
+    min-width: 100px;
+    text-align: center;
 }
 
 .pagination button.active {
     background: #e65100;
+    cursor: default;
+    pointer-events: none;
 }
 
 .pagination button:disabled {
@@ -473,4 +480,7 @@ main {
     cursor: not-allowed;
 }
 
+.pagination button:hover:not(:disabled):not(.active) {
+    background: #e65100;
+}
 /*# sourceMappingURL=MainStyles.css.map */
