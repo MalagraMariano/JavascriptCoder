@@ -17,7 +17,11 @@
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" /> <!-- AOS CSS for animations -->
     <link rel="stylesheet" href="Css/MainStyles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
 </head>
 
 <body>
@@ -55,7 +59,7 @@
                 <button class="cart-button primary" onclick="processOrder()">
                     <i class="fas fa-shopping-bag"></i> Comprar
                 </button>
-                <button class="cart-button secondary" onclick="clearCart()">
+                <button  id="btnClean" class="cart-button secondary" >
                     <i class="fas fa-trash"></i> Vaciar
                 </button>
             </div>
@@ -79,6 +83,7 @@
     <footer>
         Mundo Guitarra &reg; | Contacto: <a href="mailto:info@mundoguitarra.com">info@mundoguitarra.com</a>
     </footer>
+    
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="Javascript/main.js"></script>
@@ -87,6 +92,7 @@
     <script>
         AOS.init();
     </script>
+    
 </body>
 
 </html>

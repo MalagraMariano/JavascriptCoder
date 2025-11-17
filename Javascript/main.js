@@ -2,11 +2,13 @@ let cart = [];
 //constante para imagen placeholder
 const PLACEHOLDER_IMAGE = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAYAAABS3GwHAAAACXBIWXMAAAsTAAALEwEAmpwYAAAF0WlUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNy4yLWMwMDAgNzkuMWI2NWE3OWI0LCAyMDIyLzA2LzEzLTIyOjAxOjAxICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIiB4bWxuczpzdEV2dD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlRXZlbnQjIiB4bWxuczpkYz0iaHR0cDovL3B1cmwub3JnL2RjL2VsZW1lbnRzLzEuMS8iIHhtbG5zOnBob3Rvc2hvcD0iaHR0cDovL25zLmFkb2JlLmNvbS9waG90b3Nob3AvMS4wLyIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgMjQuMCAoTWFjaW50b3NoKSIgeG1wOkNyZWF0ZURhdGU9IjIwMjQtMDMtMjFUMTE6Mzk6NDctMDM6MDAiIHhtcDpNZXRhZGF0YURhdGU9IjIwMjQtMDMtMjFUMTE6Mzk6NDctMDM6MDAiIHhtcDpNb2RpZnlEYXRlPSIyMDI0LTAzLTIxVDExOjM5OjQ3LTAzOjAwIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjQ5YTFhNjM5LWU5ZTAtNDM0OC04MDQ1LThlZDY2ZWE4ODNjNyIgeG1wTU06RG9jdW1lbnRJRD0iYWRvYmU6ZG9jaWQ6cGhvdG9zaG9wOjk0ZDVhZTQ3LTM5ZmUtZDA0Ny05ZmE0LTQ5MGYzZGJlOWM5MCIgeG1wTU06T3JpZ2luYWxEb2N1bWVudElEPSJ4bXAuZGlkOjk0ZDVhZTQ3LTM5ZmUtZDA0Ny05ZmE0LTQ5MGYzZGJlOWM5MCIgZGM6Zm9ybWF0PSJpbWFnZS9wbmciIHBob3Rvc2hvcDpDb2xvck1vZGU9IjMiPiA8eG1wTU06SGlzdG9yeT4gPHJkZjpTZXE+IDxyZGY6bGkgc3RFdnQ6YWN0aW9uPSJjcmVhdGVkIiBzdEV2dDppbnN0YW5jZUlEPSJ4bXAuaWlkOjk0ZDVhZTQ3LTM5ZmUtZDA0Ny05ZmE0LTQ5MGYzZGJlOWM5MCIgc3RFdnQ6d2hlbj0iMjAyNC0wMy0yMVQxMTozOTo0Ny0wMzowMCIgc3RFdnQ6c29mdHdhcmVBZ2VudD0iQWRvYmUgUGhvdG9zaG9wIDI0LjAgKE1hY2ludG9zaCkiLz4gPC9yZGY6U2VxPiA8L3htcE1NOkhpc3Rvcnk+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+yiRJRwAABs5JREFUeJzt3U1y2zgQBtAW5QNkl1NlkyPlKJnbZJ9TJaeZ48QryytLliyrswAp0YL4o9Bo4L03M7U1KQUe2g2QEgm+vL6+CkJ1fwgBEIAQAQgRgBABCBGAEAEIEYAQAQgRgBABCBGAEAEIEYAQAQgRgBABCBGAEAEIEYAQAQgRgBABCBGAEAEIEYAQAQgRgBABCBGAEAEIEYAQAQgRgBABCBGAEAEIEYAQAQgRgBABCBGAEAEIEYAQAQgRgBABCBGAEAEIEYAQAQgRgBABCBGAEAEIEYAQAQgRgBABCBGAEAEIEYAQAQgRgBABCBGAEAEIEYAQAQgRgBABCBGAEAEIEYAQAQgRgBABCBGAEAEIEYAQAQgRgBABCBGAEAEIEYAQAQgRgBABCBGAEAEIEYAQAQgRgBABCBGAEAEIEYAQAQgRgBABCBGAEAEIEYAQAQgRgBABCBGAEAEIEYAQAQgRgBABCBGAEAEIEYAQAQgRgBABCBGAEAEIEYAQAQgRgBABCBGAEAEIEYAQAQgRgBABCBGAEAEIEYAQAQgRgBABCBGAEAEIEYAQAQgRgBABCBGAEAEIEYAQAQgRgBABCBGAEAEIEYAQAQgRgBABCBGAEAEIEYAQAQgRgBABCBGAEAEIEYAQAQgRgBABCBGAEAEIEYAQAQgRgBABCBGAEAEIEYAQAQgRgBABCBGAEAEIEYAQAQgRgBABCBGAEAEIEYAQAQgRgBABCBGAEAEIEYAQAQgRgBABCBGAEAEIEYAQAQgRgBABCBGAEAEIEYAQAQgRgBABCBGAEAEIEYAQAQgRgBABCBGAEAEIEYAQAQgRgBABCBGAEAEIEYAQAQgRgBABCBGAEAEIEYAQAQgRgBABCBGAEAEIEYAQAQgRgBABCBGAEAEIEYAQAQgRgBABCBGAEAEIEYAQAQgRgBABCBGAEAEIEYAQAQgRgBABCBGAEAEIEYAQAQgRgBABCBGAEAEIEYAQAQgRgBABCBGAEAEIEYAQAQgRgBABCBGAEAEIEYAQAQgRgBABCBGAEAEIEYAQAQgRgBABCBGAEAEIEYAQAQgRgBABCBGAEAEIEYAQAQgRgBABCBGAEAEIEYAQAQgRgBABCBGAEAEIEYAQAQgRgBABCBGAEAEIEYAQAQgRgBABCBGAEAEIEYAQAQgRgBABCBGAEAEIEYAQAQgRgBABCBGAEAEIEYAQAQgRgBABCBGAEAEIEYAQAQgRgBABCBGAEAEIEYAQAQgRgBABCBGAEAEIEYAQAQgRgBABCBGAEAEIEYAQAQgRgBABCBGAEAEIEYAQAQgRgBABCBGAEAEIEYAQAQgRgBABCBGAEAEIEYAQAQgRgBABCBGAEAEIEYAQAQgRgBABCBGAEAEIEYAQAQgRgBABCBGAEAEIEYAQAQgRgBABCBGAEAEIEYAQAQgRgBABCBGAEAEIEYAQAQgRgBABCBGAEAEIEYAQAQgRgBABCBGAEAEIEYAQAQgRgBABCBGAEAEIEYAQAQgRgBABCBGAEAEIEYAQAQgRgBABCBGAEAEIEYAQAQgRgBABCBGAEAEIEYAQAQgRgBABCBGAEAEIEYAQAQgRgBABCBGAEAEIEYAQAQgRgBABCBGAEAEIEYAQAQgRgBABCBGAEAEIEYAQAQgRgBABCBGAEAEIEYAQAQgRgBABCBGAEAEIEYAQAQgRgBABCBGAEAEIEYAQAQgRgBABCBGAEAEIEYAQAQgRgBABCBGAEAEIEYAQAQgRgBABCBGAEAEIEYAQAQgRgBABCBGAEAEIEYAQAQgRgBABCBGAEAEIEYAQAQgRgBABCBGAEAEIEYAQAQgRgBABCBGAEAEIEYAQAQgRgBABCBGAEAEIEYAQAQgRgBABCBGAEAEIEYAQAQgRgBABCBGAEAEIEYAQAQgRgBABCBGAEAEIEYAQAQgRgBABCBGAEAEIEYAQAQgRgBABCBGAEAEIEYAQAQgRgBABCBGAEAEIEYAQAQgRgBABCBGAEAEIEYAQAQgRgBABCBGAEAEIEYAQAQgRgBABCBGAEAEIEYAQAQgRgBABCBGAEAEIEYAQAQgRgBABCBGAEAEIEYAQAQgRgBABCBGAEAEIEYAQAQgRgBABCBGAEAEIEYAQAQgRgBABCBGAEAEIEYAQAQgRgBABCBGAEAEIEYAQAQgRgBABCBGAEAEIEYAQAQgRgBABCPkfNhFCWUYyGHYAAAAASUVORK5CYII=';
 let currentPage = 1;
-const itemsPerPage = 10;
+const itemsPerPage = 10;// Array para almacenar los items del catalogo
+const catalogItems = [];
 
 // Inicialiaza el catalogo en load de la pagina
-document.addEventListener('DOMContentLoaded', () => {
-    renderCatalog();
+document.addEventListener('DOMContentLoaded', async () => {
+    await fetchProductsFromAPI();
+    renderCatalog(catalogItems);
     loadCartFromStorage();
 
     // Agrega event listeners a los checkboxes de filtro
@@ -25,36 +27,84 @@ function addToCart(price, type) {
     const totalSinDescuento = cart.reduce((sum, item) => sum + item.price, 0);
 
     document.getElementById('cart-count').textContent = cart.length;
-    document.getElementById('cart-total').textContent = 'U$D' + totalSinDescuento;
+    document.getElementById('cart-total').textContent = 'U$D' + totalSinDescuento.toFixed(2);
     document.getElementById('final-amount').textContent = ''; // Limpiamos el total final al agregar un nuevo producto
     saveCartToStorage();
 }
 
 function processOrder() {
     if (cart.length === 0) {
-        console.log('El carrito está vacío. Agregue productos antes de comprar.');
+        Swal.fire({
+            icon: 'warning',
+            title: 'Carrito vacío',
+            text: 'Agrega productos antes de comprar.',
+        });
         return;
     }
 
     // Calcula el total con descuentos aplicados
-    const discount = 0.25;
+    const discountRate = 0.25;
+    let subtotal = 0;
+    let totalDiscount = 0;
     let finalTotal = 0;
 
-    cart.forEach(item => {
+    const itemsHtml = cart.map((item, idx) => {
+        const price = Number(item.price) || 0;
+        subtotal += price;
+
         if (item.type === 'guitarra') {
-            finalTotal += item.price * (1 - discount);
+            const discounted = price * (1 - discountRate);
+            totalDiscount += price - discounted;
+            finalTotal += discounted;
+            return `<li><strong>#${idx + 1}</strong> ${item.type} — Precio: U$D${price.toFixed(2)} → Con descuento: U$D${discounted.toFixed(2)}</li>`;
         } else {
-            finalTotal += item.price;
+            finalTotal += price;
+            return `<li><strong>#${idx + 1}</strong> ${item.type} — Precio: U$D${price.toFixed(2)}</li>`;
         }
+    }).join('');
+
+    // Detalle de la compra en HTML
+    const summaryHtml = `
+        <div style="text-align:left;">
+            <h4>Detalle de la compra</h4>
+            <ul style="list-style:none; padding:0; margin:0 0 10px 0;">${itemsHtml}</ul>
+            <hr />
+            <p>Subtotal: <strong>U$D${subtotal.toFixed(2)}</strong></p>
+            <p>Descuento aplicado: <strong>U$D${totalDiscount.toFixed(2)}</strong></p>
+            <p style="font-size:1.1em">Total a pagar: <strong>U$D${finalTotal.toFixed(2)}</strong></p>
+        </div>
+    `;
+
+    Swal.fire({
+        title: 'Confirmar compra',
+        html: summaryHtml,
+        icon: 'info',
+        showCancelButton: true,
+        confirmButtonText: 'Confirmar compra',
+        cancelButtonText: 'Cancelar',
+        width: '600px'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            // Se confirma la compra y se vacía el carrito
+            clearCart();
+            Toastify({
+                text: `Compra confirmada. Total: U$D${finalTotal.toFixed(2)}`,
+                duration: 3500,
+                gravity: "top",
+                position: "right",
+                style: { background: "linear-gradient(to right, #00b09b, #96c93d)" }
+            }).showToast();
+        }
+    }).catch(err => {
+        Toastify({
+            text: "Error al procesar la compra",
+            duration: 4000,
+            gravity: "top",
+            position: "right",
+            style: { background: "linear-gradient(to right, #ff5f6d, #ffc371)" }
+        }).showToast();
+        console.error(err);
     });
-
-    console.log('--- Resumen de la Compra ---');
-    console.log(`Total de productos: ${cart.length}`);
-    console.log(`Monto final: U$D${finalTotal.toFixed(2)}`);
-    console.log('¡Gracias por su compra!');
-
-    // Limpia el carrito después de la compra
-    clearCart();
 }
 
 function updateCartDisplay() {
@@ -75,7 +125,8 @@ function clearCart() {
 }
 
 // Muestra en consola el detalle de los productos en el carrito, indicando precios con y sin descuento
-function showCartDetails() {
+//Se comento para ya que se deprecó en favor de la función processOrder con SweetAlert2
+/*function showCartDetails() {
     console.log('--- Detalle de Productos en el Carrito ---');
 
     if (cart.length === 0) {
@@ -95,7 +146,7 @@ function showCartDetails() {
     });
 
     console.log('-----------------------------------------');
-}
+}*/
 
 //Clase de Catalogo para cada item
 class CatalogItem {
@@ -132,8 +183,41 @@ class CatalogItem {
     }
 }
 
-// datos del catalogo
-const catalogItems = [
+async function fetchProductsFromAPI() {
+    try {
+        const response = await fetch('https://fakestoreapi.com/products');
+        if (!response.ok) throw new Error('Error al obtener productos');
+        const products = await response.json();
+        const items = products.map(product =>
+            new CatalogItem(
+                product.id,
+                product.title,
+                Math.round(product.price * 100) / 100,
+                product.category,
+                product.image
+            )
+        );
+
+        // Poblar el array global catalogItems para que paginado/filtros funcionen
+        catalogItems.length = 0;
+        items.forEach(it => catalogItems.push(it));
+
+        return items;
+    } catch (error) {
+        Toastify({
+            text: "Error al cargar los productos",
+            duration: 4000,
+            gravity: "top",
+            position: "right",
+            style: { background: "linear-gradient(to right, #ff5f6d, #ffc371)" }
+        }).showToast();
+        console.error(error);
+        return catalogItems; // retorna catalogo por defecto si falla
+    }
+}
+
+// datos del catalogon [...el array fue comentado para usar fetch desde un json externo...]
+/*const catalogItems = [
     new CatalogItem(
         1,
         'Guitarra Gibson Les Pauls',
@@ -219,8 +303,10 @@ const catalogItems = [
         '../Images/shop/yamahabass.jpg'
     )
 ];
+*/
+
 // Función para renderizar el catalogo en el dom
-function renderCatalog(items = catalogItems) {
+function renderCatalog(items) {
     const catalogContainer = document.querySelector('.catalogo');
 
     const existingPagination = document.querySelector('.pagination');
@@ -314,4 +400,40 @@ function loadCartFromStorage() {
         cart = JSON.parse(savedCart);
         updateCartDisplay();
     }
+}
+
+// Manejo del boton de limpiar carrito con SweetAlert2 y Toastify
+const btnClean = document.getElementById("btnClean");
+if (btnClean) {
+    btnClean.addEventListener("click", () => {
+        Swal.fire({
+            icon: "warning",
+            title: "¿Estás seguro de borrar tus compras?",
+            text: "Esta acción vaciará el carrito.",
+            showCancelButton: true,
+            confirmButtonText: "Sí, borrar",
+            cancelButtonText: "Cancelar"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                clearCart();
+                Toastify({
+                    text: "Carrito vaciado correctamente",
+                    duration: 3000,
+                    gravity: "top",
+                    position: "right",
+                    style: { background: "linear-gradient(to right, #00b09b, #96c93d)" }
+                }).showToast();
+            }
+            // si canceló, no hacer nada
+        }).catch((err) => {
+            Toastify({
+                text: "Error al mostrar la confirmación",
+                duration: 4000,
+                gravity: "top",
+                position: "right",
+                style: { background: "linear-gradient(to right, #ff5f6d, #ffc371)" }
+            }).showToast();
+            console.error(err);
+        });
+    });
 }
