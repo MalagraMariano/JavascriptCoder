@@ -184,35 +184,56 @@ class CatalogItem {
 }
 
 async function fetchProductsFromAPI() {
-    try {
-        const response = await fetch('https://fakestoreapi.com/products');
-        if (!response.ok) throw new Error('Error al obtener productos');
-        const products = await response.json();
-        const items = products.map(product =>
-            new CatalogItem(
-                product.id,
-                product.title,
-                Math.round(product.price * 100) / 100,
-                product.category,
-                product.image
-            )
-        );
+ // Intentar servicio local primero
+    const localUrl = 'http://localhost:3000/api/products';
+    const fallbackUrl = 'https://fakestoreapi.com/products';
 
-        // Poblar el array global catalogItems para que paginado/filtros funcionen
+    const mapProduct = (product) => {
+        const id = product.id;
+        const name = product.name || product.title || 'Producto';
+        const price = Number((product.price ?? 0));
+        // Si el servicio local devuelve rutas como "/Images/..." las servimos desde /static
+        const imageUrl = product.imageUrl
+            ? `/static${product.imageUrl}`
+            : (product.image || PLACEHOLDER_IMAGE);
+
+        const type = product.type || product.category || 'otros';
+        return new CatalogItem(id, name, Math.round(price * 100) / 100, type, imageUrl);
+    };
+
+    try {
+        const resp = await fetch(localUrl);
+        if (!resp.ok) throw new Error(`Local service error: ${resp.status}`);
+        const products = await resp.json();
+        const items = products.map(mapProduct);
+
         catalogItems.length = 0;
         items.forEach(it => catalogItems.push(it));
-
         return items;
-    } catch (error) {
-        Toastify({
-            text: "Error al cargar los productos",
-            duration: 4000,
-            gravity: "top",
-            position: "right",
-            style: { background: "linear-gradient(to right, #ff5f6d, #ffc371)" }
-        }).showToast();
-        console.error(error);
-        return catalogItems; // retorna catalogo por defecto si falla
+    } catch (errLocal) {
+        console.warn('No se pudo conectar al servicio local, intentando fakestoreapi:', errLocal);
+
+        // Fallback a fakestoreapi
+        try {
+            const resp2 = await fetch(fallbackUrl);
+            if (!resp2.ok) throw new Error(`Fallback error: ${resp2.status}`);
+            const products2 = await resp2.json();
+            const items2 = products2.map(mapProduct);
+
+            catalogItems.length = 0;
+            items2.forEach(it => catalogItems.push(it));
+            return items2;
+        } catch (errFallback) {
+            Toastify({
+                text: "Error al cargar los productos (local y fallback)",
+                duration: 4000,
+                gravity: "top",
+                position: "right",
+                style: { background: "linear-gradient(to right, #ff5f6d, #ffc371)" }
+            }).showToast();
+            console.error(errLocal, errFallback);
+            return catalogItems; // retorna lo que haya en memoria
+        }
     }
 }
 
